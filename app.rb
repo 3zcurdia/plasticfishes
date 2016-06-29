@@ -38,9 +38,9 @@ __END__
 doctype html
 html
   head
-    title PlasticFishes
+    title Plastic Fishes
+    meta name="keywords" content="plastic random fishes api"
     link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css"
-    meta name="keywords" content="twitter feed analizer"
 
   body
     div.pure-g
@@ -54,7 +54,7 @@ div.pure-g
   div.pure-u-6-24
     img src='full-pool-eaten.png'
   div.pure-u-18-24
-    h1 Hello random fishes
+    h1 Plastic Fishes
     p
       a class='pure-button pure-button-primary button-xlarge' href='/random' HTML
       | &nbsp;
