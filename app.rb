@@ -3,7 +3,7 @@ require 'sinatra'
 require 'slim'
 require 'json'
 
-FISHES = Dir[File.dirname(__FILE__) + '/public/*.png'].freeze
+FISHES = Dir[File.dirname(__FILE__) + '/public/*.png'].map { |x| x.sub('/app/public','').sub('./public','').sub('.png', '').gsub('/','') }.freeze
 
 get "/" do
   slim :index
@@ -15,17 +15,16 @@ end
 
 get '/random.json' do
   content_type :json
-  random_fish = FISHES.sample.sub('./public','').sub('.png', '')
+  random_fish = FISHES.sample
   {
-    name: random_fish.gsub('/',''),
-    url: "#{request.base_url}/fish#{random_fish}",
-    image_url: "#{request.base_url}#{random_fish}.png"
+    name: random_fish,
+    url: "#{request.base_url}/fish/#{random_fish}",
+    image_url: "#{request.base_url}/#{random_fish}.png"
   }.to_json
 end
 
 get '/random.png' do
-  random_fish = FISHES.sample.sub('./public','')
-  redirect to(random_fish)
+  redirect to("/#{FISHES.sample}.png")
 end
 
 __END__
@@ -35,7 +34,7 @@ doctype html
 html
   head
     title PlasticFishes
-    link rel="stylesheet" href="//yui.yahooapis.com/pure/0.6.0/pure-min.css"
+    link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css"
     meta name="keywords" content="twitter feed analizer"
 
   body
