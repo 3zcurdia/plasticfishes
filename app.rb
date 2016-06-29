@@ -14,6 +14,10 @@ get "/fish/:id" do
   slim :fish
 end
 
+get '/random' do
+  redirect to("/fish/#{FISHES.sample}")
+end
+
 get '/random.json' do
   content_type :json
   random_fish = FISHES.sample
@@ -52,6 +56,8 @@ div.pure-g
   div.pure-u-18-24
     h1 Hello random fishes
     p
+      a class='pure-button pure-button-primary button-xlarge' href='/random' HTML
+      | &nbsp;
       a class='pure-button pure-button-primary button-xlarge' href='/random.json' JSON
       | &nbsp;
       a class='pure-button pure-button-primary button-xlarge' href='/random.png' PNG
@@ -60,7 +66,7 @@ div.pure-g
 div.pure-g
   div.pure-u-6-24
     img src='/#{@fish_name}.png'
-  div.pure-u-18-24
+  div.pure-u-12-24
     h1
       == @fish_name.gsub('-',' ').capitalize
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
