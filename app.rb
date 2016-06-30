@@ -40,33 +40,30 @@ html
   head
     title Plastic Fishes
     meta name="keywords" content="plastic random fishes api"
-    link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css"
+    link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"
 
   body
-    div.pure-g
-      div.pure-u-2-24
-      div.pure-u-20-24
-        == yield
-      div.pure-u-2-24
+    div.container
+      == yield
 
 @@ index
-div.pure-g
-  div.pure-u-6-24
+div.row.jumbotron
+  div.col-md-3.col-xs-12
     img src='full-pool-eaten.png'
-  div.pure-u-18-24
+  div.col-md-9.col-xs-12
     h1 Plastic Fishes
     p
-      a class='pure-button pure-button-primary button-xlarge' href='/random' HTML
+      a.btn.btn-primary.btn-lg href='/random' HTML
       | &nbsp;
-      a class='pure-button pure-button-primary button-xlarge' href='/random.json' JSON
+      a.btn.btn-primary.btn-lg href='/random.json' JSON
       | &nbsp;
-      a class='pure-button pure-button-primary button-xlarge' href='/random.png' PNG
+      a.btn.btn-primary.btn-lg href='/random.png' PNG
 
 @@ fish
-div.pure-g
-  div.pure-u-6-24
+div.row
+  div.col-md-3
     img src='/#{@fish_name}.png'
-  div.pure-u-12-24
+  div.col-md-9
     h1
       == @fish_name.gsub('-',' ').capitalize
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
