@@ -6,6 +6,8 @@ GEM
     json (2.1.0)
     mustermann (1.0.0)
     rack (2.0.3)
+    rack-cache (1.7.0)
+      rack (>= 0.4)
     rack-protection (2.0.0)
       rack
     sinatra (2.0.0)
@@ -28,6 +30,7 @@ PLATFORMS
 
 DEPENDENCIES
   json
+  rack-cache
   sinatra
   slim
   thin

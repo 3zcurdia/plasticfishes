@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rubygems'
+require 'rack/cache'
 require 'sinatra'
 require 'slim'
 require 'json'
@@ -19,6 +20,7 @@ def hash_for_fish(id)
 end
 
 get '/' do
+  cache_control :public, max_age: 36000
   slim :index
 end
 
@@ -31,11 +33,13 @@ get '/fishes/random.png' do
 end
 
 get '/fishes/:id' do
+  cache_control :public, max_age: 36000
   @fish = params[:id]
   slim :fish
 end
 
 get '/api/fishes.json' do
+  cache_control :public, max_age: 36000
   content_type :json
   FISHES.map { |name| hash_for_fish(name) }.to_json
 end
@@ -46,6 +50,7 @@ get '/api/fishes/random.json' do
 end
 
 get '/api/fishes/:id.json' do
+  cache_control :public, max_age: 36000
   content_type :json
   return {}.to_json unless FISHES.include?(params[:id])
   hash_for_fish(params[:id]).to_json
