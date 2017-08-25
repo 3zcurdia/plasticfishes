@@ -75,7 +75,7 @@ div.row.jumbotron
     p
       a.btn.btn-primary.btn-lg href='/fishes/random' HTML
       | &nbsp;
-      a.btn.btn-primary.btn-lg href='/random.png' PNG
+      a.btn.btn-primary.btn-lg href='/fishes/random.png' PNG
       | &nbsp;
       a.btn.btn-primary.btn-lg href='/api/fishes.json' API ALL
       | &nbsp;
