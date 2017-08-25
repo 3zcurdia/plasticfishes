@@ -1,36 +1,55 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'sinatra'
 require 'slim'
 require 'json'
 
-FISHES = Dir[File.dirname(__FILE__) + '/public/*.png'].map { |x| x.sub('/app/public','').sub('./public','').sub('.png', '').gsub('/','') }.freeze
+FISHES = Dir[File.dirname(__FILE__) + '/public/*.png'].map { |x| x.sub('/app/public', '').sub('./public', '').sub('.png', '').delete('/') }.freeze
 
-get "/" do
+def hash_for_fish(name)
+  {
+    name: name,
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    url: "#{request.base_url}/fishes/#{name}",
+    image_url: "#{request.base_url}/fishes/#{name}.png"
+  }
+end
+
+get '/' do
   slim :index
 end
 
-get "/fish/:id" do
-  @fish_name = params[:id]
+get '/fishes/random' do
+  redirect to("/fishes/#{FISHES.sample}")
+end
+
+get '/fishes/random.png' do
+  redirect to("/#{FISHES.sample}.png")
+end
+
+get '/fishes/:id' do
+  @fish = params[:id]
   slim :fish
 end
 
-get '/random' do
-  redirect to("/fish/#{FISHES.sample}")
-end
 
-get '/random.json' do
+get '/api/fishes.json' do
   content_type :json
-  random_fish = FISHES.sample
-  {
-    name: random_fish,
-    url: "#{request.base_url}/fish/#{random_fish}",
-    image_url: "#{request.base_url}/#{random_fish}.png"
-  }.to_json
+  FISHES.map { |name| hash_for_fish(name) }.to_json
 end
 
-get '/random.png' do
-  redirect to("/#{FISHES.sample}.png")
+get '/api/fishes/random.json' do
+  content_type :json
+  hash_for_fish(FISHES.sample).to_json
 end
+
+get '/api/fishes/:id.json' do
+  content_type :json
+  return {}.to_json unless FISHES.include?(params[:id])
+  hash_for_fish(params[:id]).to_json
+end
+
 
 __END__
 
@@ -39,12 +58,13 @@ doctype html
 html
   head
     title Plastic Fishes
-    meta name="keywords" content="plastic random fishes api"
-    link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"
+    meta name='keywords' content='plastic random fishes api'
+    link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'
 
   body
     div.container
       == yield
+    script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'
 
 @@ index
 div.row.jumbotron
@@ -53,17 +73,19 @@ div.row.jumbotron
   div.col-md-9.col-xs-12
     h1 Plastic Fishes
     p
-      a.btn.btn-primary.btn-lg href='/random' HTML
-      | &nbsp;
-      a.btn.btn-primary.btn-lg href='/random.json' JSON
+      a.btn.btn-primary.btn-lg href='/fishes/random' HTML
       | &nbsp;
       a.btn.btn-primary.btn-lg href='/random.png' PNG
+      | &nbsp;
+      a.btn.btn-primary.btn-lg href='/api/fishes.json' API ALL
+      | &nbsp;
+      a.btn.btn-primary.btn-lg href='/api/fishes/random.json' API RANDOM
 
 @@ fish
 div.row
   div.col-md-3
-    img src='/#{@fish_name}.png'
+    img src="/#{@fish}.png"
   div.col-md-9
     h1
-      == @fish_name.gsub('-',' ').capitalize
+      == @fish.gsub('-',' ').capitalize
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
