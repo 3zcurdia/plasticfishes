@@ -13,7 +13,7 @@ def hash_for_fish(name)
     text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     api_url: "#{request.base_url}/api/fishes/#{name}.json",
     web_url: "#{request.base_url}/fishes/#{name}",
-    image_url: "#{request.base_url}/fishes/#{name}.png"
+    image_url: "#{request.base_url}/#{name}.png"
   }
 end
 
@@ -60,8 +60,7 @@ html
   head
     title Plastic Fishes
     meta name='keywords' content='plastic random fishes api'
-    link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'
-
+    link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'
   body
     div.container
       == yield
