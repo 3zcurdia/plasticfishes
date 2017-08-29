@@ -38,18 +38,18 @@ get '/fishes/:id' do
   slim :fish
 end
 
-get '/api/fishes.json' do
+get '/api/fishes' do
   cache_control :public, max_age: 36000
   content_type :json
   FISHES.map { |name| hash_for_fish(name) }.to_json
 end
 
-get '/api/fishes/random.json' do
+get '/api/fishes/random' do
   content_type :json
   hash_for_fish(FISHES.sample).to_json
 end
 
-get '/api/fishes/:id.json' do
+get '/api/fishes/:id' do
   cache_control :public, max_age: 36000
   content_type :json
   return {}.to_json unless FISHES.include?(params[:id])
@@ -82,9 +82,9 @@ div.row.jumbotron
       | &nbsp;
       a.btn.btn-primary.btn-lg href='/fishes/random.png' PNG
       | &nbsp;
-      a.btn.btn-primary.btn-lg href='/api/fishes.json' API ALL
+      a.btn.btn-primary.btn-lg href='/api/fishes' API ALL
       | &nbsp;
-      a.btn.btn-primary.btn-lg href='/api/fishes/random.json' API RANDOM
+      a.btn.btn-primary.btn-lg href='/api/fishes/random' API RANDOM
 
 @@ fish
 div.row
