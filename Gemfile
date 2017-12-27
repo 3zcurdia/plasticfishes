@@ -1,6 +1,7 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-ruby '2.4.1'
+source 'https://rubygems.org'
+ruby '2.5.0'
 
 gem 'json'
 gem 'rack-cache'
