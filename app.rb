@@ -11,7 +11,7 @@ FISHES = Dir[File.dirname(__FILE__) + '/public/*.png'].map { |x| x.sub('/app/pub
 def hash_for_fish(id)
   {
     id: id,
-    name: id.gsub('-',' ').capitalize,
+    name: id.tr('-', ' ').capitalize,
     text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     api_url: "#{request.base_url}/api/fishes/#{id}.json",
     web_url: "#{request.base_url}/fishes/#{id}",
@@ -20,7 +20,7 @@ def hash_for_fish(id)
 end
 
 get '/' do
-  cache_control :public, max_age: 36000
+  cache_control :public, max_age: 36_000
   slim :index
 end
 
@@ -33,13 +33,13 @@ get '/fishes/random.png' do
 end
 
 get '/fishes/:id' do
-  cache_control :public, max_age: 36000
+  cache_control :public, max_age: 36_000
   @fish = params[:id]
   slim :fish
 end
 
 get '/api/fishes' do
-  cache_control :public, max_age: 36000
+  cache_control :public, max_age: 36_000
   content_type :json
   FISHES.map { |name| hash_for_fish(name) }.to_json
 end
@@ -50,7 +50,7 @@ get '/api/fishes/random' do
 end
 
 get '/api/fishes/:id' do
-  cache_control :public, max_age: 36000
+  cache_control :public, max_age: 36_000
   content_type :json
   return {}.to_json unless FISHES.include?(params[:id])
   hash_for_fish(params[:id]).to_json
