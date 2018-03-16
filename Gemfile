@@ -5,6 +5,6 @@ ruby '2.5.0'
 
 gem 'json'
 gem 'rack-cache'
-gem 'sinatra'
+gem 'sinatra', '~> 2.0.1'
 gem 'slim'
 gem 'thin'
