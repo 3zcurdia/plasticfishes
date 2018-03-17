@@ -3,7 +3,6 @@
 require 'rubygems'
 require 'rack/cache'
 require 'sinatra'
-require 'slim'
 require 'json'
 
 FISHES = Dir[File.dirname(__FILE__) + '/public/*.png'].map { |x| x.sub('/app/public', '').sub('./public', '').sub('.png', '').delete('/') }.freeze
@@ -21,7 +20,7 @@ end
 
 get '/' do
   cache_control :public, max_age: 36_000
-  slim :index
+  erb :index
 end
 
 get '/fishes/random' do
@@ -35,7 +34,8 @@ end
 get '/fishes/:id' do
   cache_control :public, max_age: 36_000
   @fish = params[:id]
-  slim :fish
+  @fish_name = @fish.gsub('-',' ').capitalize
+  erb :show
 end
 
 get '/api/fishes' do
@@ -60,37 +60,53 @@ end
 __END__
 
 @@ layout
-doctype html
-html
-  head
-    title Plastic Fishes
-    meta name='keywords' content='plastic random fishes api'
-    link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'
-  body
-    div.container
-      == yield
-    script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'
+<html>
+  <head>
+    <title>Plastic Fishes</title>
+    <meta name="keywords" content="plastic random fishes api" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css" />
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css" />
+  </head>
+  <body>
+    <div class="container"><%= yield %></div>
+  </body>
+ </html>
 
 @@ index
-div.row.jumbotron
-  div.col-md-3.col-xs-12
-    img src='full-pool-eaten.png'
-  div.col-md-9.col-xs-12
-    h1 Plastic Fishes
-    p
-      a.btn.btn-primary.btn-lg href='/fishes/random' HTML
-      | &nbsp;
-      a.btn.btn-primary.btn-lg href='/fishes/random.png' PNG
-      | &nbsp;
-      a.btn.btn-primary.btn-lg href='/api/fishes' API ALL
-      | &nbsp;
-      a.btn.btn-primary.btn-lg href='/api/fishes/random' API RANDOM
+<div class="row">
+  <div class="column column-20">
+    <img src="full-pool-eaten.png"/>
+  </div>
+  <div class="column column-80">
+    <h1>Plastic Fishes</h1>
+    <p>
+      <a class="button button-outline" href="/fishes/random">HTML</a>
+      &nbsp;
+      <a class="button button-outline" href="/fishes/random.png">PNG</a>
+      &nbsp;
+      <a class="button button-outline" href="/api/fishes">API ALL</a>
+      &nbsp;
+      <a class="button button-outline" href="/api/fishes/random">API RANDOM</a>
+    </p>
+  </div>
+</div>
 
-@@ fish
-div.row
-  div.col-md-3
-    img src="/#{@fish}.png"
-  div.col-md-9
-    h1
-      == @fish.gsub('-',' ').capitalize
-    p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+@@ show
+<div class="row">
+  <div class="column column-20">
+    <img src='<%= "/#{@fish}.png" %>'/>
+  </div>
+  <div class="column column-80">
+    <h1><%= @fish_name %></h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+      pariatur. Excepteur sint occaecat cupidatat non proident,
+      sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+</div>

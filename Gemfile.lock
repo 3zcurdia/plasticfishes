@@ -15,10 +15,6 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.1)
       tilt (~> 2.0)
-    slim (3.0.9)
-      temple (>= 0.7.6, < 0.9)
-      tilt (>= 1.3.3, < 2.1)
-    temple (0.8.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -32,7 +28,6 @@ DEPENDENCIES
   json
   rack-cache
   sinatra (~> 2.0.1)
-  slim
   thin
 
 RUBY VERSION
