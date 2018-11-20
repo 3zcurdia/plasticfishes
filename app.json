@@ -2,7 +2,7 @@
   "name": "Plastic fishes",
   "description": "Plastic fishes sinatra app to demo api connectivity on mobile apps",
   "addons": [],
-  "stack" : "heroku-16",
+  "stack" : "heroku-18",
   "buildpacks": [
     {
       "url": "heroku/ruby"

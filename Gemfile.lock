@@ -4,15 +4,15 @@ GEM
     json (2.1.0)
     mustermann (1.0.3)
     puma (3.12.0)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-cache (1.8.0)
       rack (>= 0.4)
-    rack-protection (2.0.3)
+    rack-protection (2.0.4)
       rack
-    sinatra (2.0.3)
+    sinatra (2.0.4)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.3)
+      rack-protection (= 2.0.4)
       tilt (~> 2.0)
     tilt (2.0.8)
 
@@ -26,7 +26,7 @@ DEPENDENCIES
   sinatra (~> 2.0.1)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
