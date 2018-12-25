@@ -47,6 +47,7 @@ class PlasticFishesApp < Sinatra::Base
   end
 
   post '/api/fishes/' do
+    cache_control :public, max_age: 36_000
     content_type :json
     fish_for([:id]).merge(fish_params).to_json
   end

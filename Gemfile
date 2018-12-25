@@ -3,7 +3,6 @@
 source 'https://rubygems.org'
 ruby '2.6.0'
 
-# gem 'json'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'puma'
