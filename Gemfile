@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.6.0'
+ruby '2.6.1'
 
 gem 'oj'
 gem 'oj_mimic_json'
