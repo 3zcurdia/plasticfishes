@@ -1,31 +1,70 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    async (1.23.0)
+      console (~> 1.0)
+      nio4r (~> 2.3)
+      timers (~> 4.1)
+    async-container (0.14.1)
+      async (~> 1.0)
+      async-io (~> 1.4)
+      process-group
+    async-http (0.48.2)
+      async (~> 1.19)
+      async-io (~> 1.25)
+      protocol-http (~> 0.12.0)
+      protocol-http1 (~> 0.9.0)
+      protocol-http2 (~> 0.9.0)
+    async-io (1.27.0)
+      async (~> 1.14)
+    build-environment (1.12.1)
+    console (1.5.0)
+    falcon (0.34.3)
+      async (~> 1.13)
+      async-container (~> 0.14.0)
+      async-http (~> 0.48.0)
+      async-io (~> 1.22)
+      build-environment (~> 1.11)
+      localhost (~> 1.1)
+      rack (>= 1.0)
+      samovar (~> 2.1)
+    localhost (1.1.6)
+    mapping (1.1.1)
     mustermann (1.0.3)
     nio4r (2.5.2)
     oj (3.10.0)
     oj_mimic_json (1.0.1)
-    puma (4.3.0)
-      nio4r (~> 2.0)
+    process-group (1.1.0)
+    protocol-hpack (1.4.1)
+    protocol-http (0.12.3)
+    protocol-http1 (0.9.0)
+      protocol-http (~> 0.5)
+    protocol-http2 (0.9.7)
+      protocol-hpack (~> 1.4)
+      protocol-http (~> 0.2)
     rack (2.0.7)
     rack-cache (1.10.0)
       rack (>= 0.4)
     rack-protection (2.0.7)
       rack
+    samovar (2.1.2)
+      console (~> 1.0)
+      mapping (~> 1.0)
     sinatra (2.0.7)
       mustermann (~> 1.0)
       rack (~> 2.0)
       rack-protection (= 2.0.7)
       tilt (~> 2.0)
     tilt (2.0.10)
+    timers (4.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  falcon
   oj
   oj_mimic_json
-  puma
   rack-cache
   sinatra (~> 2.0.5)
 

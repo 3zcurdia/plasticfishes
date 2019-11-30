@@ -1,1 +1,1 @@
-web: puma -C puma.rb
+web: rackup --server falcon --port $PORT
