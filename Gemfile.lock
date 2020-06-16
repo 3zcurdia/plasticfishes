@@ -57,7 +57,7 @@ GEM
     protocol-http2 (0.14.0)
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-cache (1.12.0)
       rack (>= 0.4)
     rack-protection (2.0.8.1)
