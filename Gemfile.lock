@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    async (1.27.0)
+    async (1.28.1)
       console (~> 1.10)
       nio4r (~> 2.3)
       timers (~> 4.1)
@@ -49,7 +49,7 @@ GEM
       samovar (~> 2.1)
     protocol-hpack (1.4.2)
     protocol-http (0.21.0)
-    protocol-http1 (0.13.1)
+    protocol-http1 (0.13.2)
       protocol-http (~> 0.19)
     protocol-http2 (0.14.1)
       protocol-hpack (~> 1.4)
