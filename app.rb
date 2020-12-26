@@ -11,7 +11,7 @@ module Assets
   module_function
 
   def filenames
-    file_paths.map { |x| sanitize_filepath(x) }
+    file_paths.map(&method(:sanitize_filepath))
   end
 
   def file_paths
