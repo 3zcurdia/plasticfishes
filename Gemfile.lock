@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    async (1.29.0)
+    async (1.29.1)
       console (~> 1.10)
       nio4r (~> 2.3)
       timers (~> 4.1)
@@ -17,12 +17,12 @@ GEM
       protocol-http2 (~> 0.14.0)
     async-http-cache (0.4.2)
       async-http (~> 0.56)
-    async-io (1.32.0)
+    async-io (1.32.1)
       async (~> 1.14)
     async-pool (0.3.7)
       async (~> 1.25)
     build-environment (1.13.0)
-    console (1.12.0)
+    console (1.13.1)
       fiber-local
     falcon (0.39.1)
       async (~> 1.13)
@@ -48,7 +48,7 @@ GEM
       console (~> 1.8)
       samovar (~> 2.1)
     protocol-hpack (1.4.2)
-    protocol-http (0.22.2)
+    protocol-http (0.22.4)
     protocol-http1 (0.14.1)
       protocol-http (~> 0.22)
     protocol-http2 (0.14.2)
@@ -59,7 +59,7 @@ GEM
       rack (>= 0.4)
     rack-protection (2.1.0)
       rack
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     samovar (2.1.4)
       console (~> 1.0)
       mapping (~> 1.0)
