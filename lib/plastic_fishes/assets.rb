@@ -16,7 +16,7 @@ module PlasticFishes
     end
 
     def sanitize_filepath(path)
-      path.split('/').last.sub('.png', '')
+      path.split("/").last.sub(".png", "")
     end
   end
 end

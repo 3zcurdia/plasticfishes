@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require_relative 'assets'
+
+require_relative "assets"
 
 module PlasticFishes
   # A simulated database model
@@ -37,11 +38,11 @@ module PlasticFishes
     def builder(key)
       {
         id: key,
-        name: key.tr('-', ' ').capitalize,
+        name: key.tr("-", " ").capitalize,
         uuid: SecureRandom.uuid,
         number: SecureRandom.hex(3).to_i(16),
         bigint: SecureRandom.hex(32).to_i(16),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         api_path: "/api/fishes/#{key}",
         web_path: "/fishes/#{key}",
         image_path: "/#{key}.png",
