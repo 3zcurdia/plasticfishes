@@ -6,9 +6,9 @@ module PlasticFishes
   # A simulated database model
   class Fishes
     def initialize
-      @list = Assets.filenames.map do |filename|
+      @list = Assets.filenames.to_h do |filename|
         [filename, builder(filename)]
-      end.to_h.freeze
+      end.freeze
     end
 
     def all

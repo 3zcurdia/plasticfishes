@@ -1,9 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    async (1.30.3)
+    ast (2.4.2)
+    async (2.0.3)
       console (~> 1.10)
-      nio4r (~> 2.3)
+      io-event (~> 1.0.0)
       timers (~> 4.1)
     async-container (0.16.12)
       async
@@ -38,13 +39,17 @@ GEM
       rack (>= 1.0)
       samovar (~> 2.1)
     fiber-local (1.0.0)
+    io-event (1.0.9)
+    json (2.6.2)
     localhost (1.1.9)
     mapping (1.1.1)
     mustermann (1.1.2)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.8)
     oj (3.13.17)
     oj_mimic_json (1.0.1)
+    parallel (1.22.1)
+    parser (3.1.2.0)
+      ast (~> 2.4.1)
     process-metrics (0.2.1)
       console (~> 1.8)
       samovar (~> 2.1)
@@ -60,6 +65,22 @@ GEM
       rack (>= 0.4)
     rack-protection (2.2.1)
       rack
+    rainbow (3.1.1)
+    regexp_parser (2.5.0)
+    rexml (3.2.5)
+    rubocop (1.32.0)
+      json (~> 2.3)
+      parallel (~> 1.10)
+      parser (>= 3.1.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.19.1, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.19.1)
+      parser (>= 3.1.1.0)
+    ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     samovar (2.1.4)
       console (~> 1.0)
@@ -69,9 +90,10 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.1)
       tilt (~> 2.0)
-    tilt (2.0.10)
+    tilt (2.0.11)
     timers (4.3.3)
     traces (0.4.1)
+    unicode-display_width (2.2.0)
 
 PLATFORMS
   ruby
@@ -81,10 +103,11 @@ DEPENDENCIES
   oj
   oj_mimic_json
   rack-cache
+  rubocop
   sinatra
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.2.22
