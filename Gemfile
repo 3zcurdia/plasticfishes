@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 ruby "3.1.2"
 
-gem "falcon"
+gem "puma"
 gem "oj"
 gem "oj_mimic_json"
 gem "rack-cache"
