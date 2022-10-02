@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: plasticfishes
+    env: ruby
+    startCommand: "rackup --server puma --port $PORT"
