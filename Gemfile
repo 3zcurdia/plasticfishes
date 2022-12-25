@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-ruby "3.1.2"
+ruby "3.2.0"
 
-gem "puma"
 gem "oj"
 gem "oj_mimic_json"
+gem "puma"
 gem "rack-cache"
 gem "sinatra"
 
