@@ -2,16 +2,16 @@
 
 require "rack/cache"
 require "roda"
-require "json"
+require "rapidjson"
 require_relative "fishes"
 
 module PlasticFishes
   # App: main roda app
   class App < Roda
-    plugin :render, engine: "erb"
+    plugin :render
     plugin :caching
     plugin :public
-    plugin :json
+    plugin :json, serializer: proc { RapidJSON.encode(_1) }
 
     def fishes
       @fishes ||= Fishes.new
@@ -19,7 +19,7 @@ module PlasticFishes
 
     route do |r|
       r.public
-      r.root { view("index") }
+      r.root { view(:index) }
 
       r.on "fishes" do
         r.is "random" do
@@ -27,10 +27,11 @@ module PlasticFishes
         end
 
         r.on String do |id|
+          @fish = fishes.find(id)
           r.get do
             response.cache_control(public: true, max_age: 36_000)
-            if (@fish = fishes.find(id))
-              view("show")
+            if @fish
+              view(:show)
             else
               response.status = 404
               { error: "Fish not found" }
@@ -46,9 +47,10 @@ module PlasticFishes
           end
 
           r.is String do |id|
+            @fish = fishes.find(id)
             r.get do
               response.cache_control(public: true, max_age: 36_000)
-              if (@fish = fishes.find(id))
+              if @fish
                 @fish
               else
                 response.status = 404

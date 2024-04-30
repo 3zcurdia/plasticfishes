@@ -5,6 +5,7 @@ ruby File.read(".ruby-version").strip
 
 gem "falcon"
 gem "rack-cache"
+gem "rapidjson"
 gem "roda"
 gem "tilt"
 

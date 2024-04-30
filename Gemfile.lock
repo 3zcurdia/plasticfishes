@@ -73,6 +73,7 @@ GEM
     rack-cache (1.17.0)
       rack (>= 0.4)
     rainbow (3.1.1)
+    rapidjson (0.2.3)
     regexp_parser (2.9.0)
     rexml (3.2.6)
     roda (3.79.0)
@@ -105,6 +106,7 @@ PLATFORMS
 DEPENDENCIES
   falcon
   rack-cache
+  rapidjson
   roda
   rubocop
   tilt
