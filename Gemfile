@@ -3,11 +3,12 @@
 source "https://rubygems.org"
 ruby File.read(".ruby-version").strip
 
+gem "falcon"
 gem "oj"
 gem "oj_mimic_json"
-gem "puma"
 gem "rack-cache"
-gem "sinatra"
+gem "roda"
+gem "tilt"
 
 group :development do
   gem "rubocop"

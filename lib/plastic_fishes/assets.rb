@@ -12,7 +12,7 @@ module PlasticFishes
     end
 
     def file_paths
-      Dir[File.join(__dir__, "../../public/*.png")]
+      Dir[File.join(__dir__, "../../public/images/*.png")]
     end
 
     def sanitize_filepath(path)

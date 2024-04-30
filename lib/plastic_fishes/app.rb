@@ -1,56 +1,70 @@
 # frozen_string_literal: true
 
 require "rack/cache"
-require "sinatra"
+require "roda"
 require "json"
 require_relative "fishes"
 
 module PlasticFishes
-  # App: main sinatra app
-  class App < Sinatra::Base
-    set :root, File.join(__dir__, "../../")
+  # App: main roda app
+  class App < Roda
+    plugin :render, engine: "erb"
+    plugin :caching
+    plugin :public
+    plugin :json
 
     def fishes
       @fishes ||= Fishes.new
     end
 
-    get "/" do
-      cache_control :public, max_age: 36_000
-      erb :index
-    end
+    route do |r|
+      r.public
+      r.root { view("index") }
 
-    get "/fishes/random/?:format?" do
-      if params[:format] == ".png"
-        redirect to("/#{fishes.random_key}.png")
-      else
-        redirect to("/fishes/#{fishes.random_key}")
+      r.on "fishes" do
+        r.is "random" do
+          r.get { r.redirect "/fishes/#{fishes.random_key}" }
+        end
+
+        r.on String do |id|
+          r.get do
+            response.cache_control(public: true, max_age: 36_000)
+            if (@fish = fishes.find(id))
+              view("show")
+            else
+              response.status = 404
+              { error: "Fish not found" }
+            end
+          end
+        end
       end
-    end
 
-    get "/fishes/:id" do
-      cache_control :public, max_age: 36_000
-      @fish = params[:id]
-      @fish_name = @fish.tr("-", " ").capitalize
-      erb :show
-    end
+      r.on "api" do
+        r.on "fishes" do
+          r.is "random" do
+            r.get { fishes.random }
+          end
 
-    get "/api/fishes/?" do
-      cache_control :public, max_age: 36_000
-      content_type :json
-      fishes.all.to_json
-    end
+          r.is String do |id|
+            r.get do
+              response.cache_control(public: true, max_age: 36_000)
+              if (@fish = fishes.find(id))
+                @fish
+              else
+                response.status = 404
+                { error: "Fish not found" }
+              end
+            end
+          end
 
-    get "/api/fishes/random/?" do
-      content_type :json
-      fishes.random.to_json
-    end
-
-    get "/api/fishes/:id/?" do
-      cache_control :public, max_age: 36_000
-      content_type :json
-      halt(404) unless fishes.include?(params[:id])
-
-      fishes.find(params[:id]).to_json
+          r.is do
+            r.get do
+              response.cache_control(public: true, max_age: 36_000)
+              fishes.all
+            end
+          end
+        end
+      end
     end
   end
 end
