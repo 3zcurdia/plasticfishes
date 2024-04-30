@@ -9,7 +9,7 @@ GEM
       timers (~> 4.1)
     async-container (0.18.2)
       async (~> 2.10)
-    async-http (0.65.1)
+    async-http (0.66.2)
       async (>= 2.10.2)
       async-pool (>= 0.6.1)
       io-endpoint (~> 0.10)
@@ -29,10 +29,10 @@ GEM
       fiber-annotation
       fiber-local
       json
-    falcon (0.47.0)
+    falcon (0.47.1)
       async
       async-container (~> 0.18)
-      async-http (~> 0.57)
+      async-http (~> 0.66, >= 0.66.2)
       async-http-cache (~> 0.4.0)
       async-service (~> 0.10)
       bundler
@@ -89,8 +89,8 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.31.2)
-      parser (>= 3.3.0.4)
+    rubocop-ast (1.31.3)
+      parser (>= 3.3.1.0)
     ruby-progressbar (1.13.0)
     samovar (2.3.0)
       console (~> 1.0)
