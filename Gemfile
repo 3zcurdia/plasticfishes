@@ -4,8 +4,6 @@ source "https://rubygems.org"
 ruby File.read(".ruby-version").strip
 
 gem "falcon"
-gem "oj"
-gem "oj_mimic_json"
 gem "rack-cache"
 gem "roda"
 gem "tilt"
