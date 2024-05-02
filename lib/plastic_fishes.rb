@@ -3,6 +3,5 @@
 require_relative "plastic_fishes/app"
 
 module PlasticFishes
-  class Error < StandardError
-  end
+  class Error < StandardError; end
 end

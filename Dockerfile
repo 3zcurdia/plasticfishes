@@ -9,7 +9,9 @@ FROM ruby:3.3.0
 WORKDIR /app
 COPY --from=builder /app .
 ARG PORT
+ENV RACK_ENV=production
+ENV RUBY_YJIT_ENABLE=1
 EXPOSE $PORT
 
 # Start the application with rackup
-CMD ["rackup", "--server", "puma", "-p", "$PORT"]
+CMD ["rackup", "--server", "falcon", "-p", "$PORT"]
