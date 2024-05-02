@@ -1,6 +1,6 @@
 # plasticfishes
 
-Sinatra app to demo api connectivity on mobile apps
+Minimal app to demo api connectivity on mobile apps
 
 ## To contribute to the project
 
