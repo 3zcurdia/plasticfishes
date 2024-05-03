@@ -42,7 +42,9 @@ GEM
       protocol-rack (~> 0.5)
       samovar (~> 2.3)
     fiber-annotation (0.2.0)
-    fiber-local (1.0.0)
+    fiber-local (1.1.0)
+      fiber-storage
+    fiber-storage (0.1.0)
     io-endpoint (0.10.2)
     io-event (1.5.1)
     io-stream (0.4.0)
