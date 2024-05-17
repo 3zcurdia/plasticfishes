@@ -77,7 +77,8 @@ GEM
     rainbow (3.1.1)
     rapidjson (0.2.3)
     regexp_parser (2.9.1)
-    rexml (3.2.6)
+    rexml (3.2.8)
+      strscan (>= 3.0.9)
     roda (3.80.0)
       rack
     rubocop (1.63.5)
@@ -97,6 +98,7 @@ GEM
     samovar (2.3.0)
       console (~> 1.0)
       mapping (~> 1.0)
+    strscan (3.1.0)
     tilt (2.3.0)
     timers (4.3.5)
     traces (0.11.1)
