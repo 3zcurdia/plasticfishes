@@ -76,7 +76,7 @@ GEM
     rainbow (3.1.1)
     rapidjson (0.2.3)
     regexp_parser (2.9.2)
-    rexml (3.3.1)
+    rexml (3.3.3)
       strscan
     roda (3.82.0)
       rack
