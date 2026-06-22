@@ -59,7 +59,7 @@ GEM
     io-endpoint (0.17.2)
     io-event (1.16.1)
     io-stream (0.13.0)
-    json (2.19.7)
+    json (2.19.9)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     localhost (1.8.0)
@@ -93,7 +93,7 @@ GEM
     regexp_parser (2.12.0)
     roda (3.105.0)
       rack
-    rubocop (1.87.0)
+    rubocop (1.88.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
