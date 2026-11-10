@@ -80,7 +80,7 @@ GEM
       rack (>= 1.0)
     protocol-url (0.18.0)
     racc (1.8.1)
-    rack (3.2.7)
+    rack (3.2.8)
     rack-cache (1.17.0)
       rack (>= 0.4)
     rainbow (3.1.1)
